@@ -1,11 +1,11 @@
 import json
 from typing import Callable
-from  ..GAME_Components import ActionRegistry
-from  ..GAME_Components import Environment
-from  ..GAME_Components import Goal
-from  ..GAME_Components import Memory
+from  ..game_components import ActionRegistry
+from  ..game_components import Environment
+from  ..game_components import Goal
+from  ..game_components import Memory
 from  .prompt import Prompt
-from  .Agent_Language.Interface import AgentLanguage
+from  .agent_language.interface import AgentLanguage
 
 
 class Agent:

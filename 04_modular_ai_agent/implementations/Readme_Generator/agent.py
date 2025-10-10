@@ -11,12 +11,12 @@ project_root = os.path.abspath(os.path.join(current_file_dir, "../.."))
 # Tell Python: "Look for modules starting from project_root"
 sys.path.insert(0, project_root)
 
-from Agent_Components.Agent_Framwork.Agent_Language.implementations import AgentFunctionCallingActionLanguage
-from Agent_Components.GAME_Components import Environment
-from Agent_Components.Agent_Framwork import Agent
+from agent_components.agent_framwork.agent_language.implementations import AgentFunctionCallingActionLanguage
+from agent_components.game_components import Environment
+from agent_components.agent_framwork import Agent
 from goals import goals
 from registry import action_registry 
-from Agent_Components.Agent_Framwork import generate_response
+from agent_components.agent_framwork import generate_response
 
 
 agent_language = AgentFunctionCallingActionLanguage()

@@ -1,5 +1,5 @@
-from Agent_Components.GAME_Components import ActionRegistry
-from Agent_Components.GAME_Components import Action
+from agent_components.game_components import ActionRegistry
+from agent_components.game_components import Action
 from tools import *
 
 action_registry = ActionRegistry()

@@ -1,9 +1,9 @@
 from typing import Dict, List, Any
 import json
-from ....GAME_Components import Action
-from ....GAME_Components import Environment
-from ....GAME_Components import Goal
-from ....GAME_Components import Memory
+from ....game_components import Action
+from ....game_components import Environment
+from ....game_components import Goal
+from ....game_components import Memory
 from ...prompt import Prompt
 from ..Interface import AgentLanguage
 

@@ -1,4 +1,4 @@
-from Agent_Components.GAME_Components import Goal
+from agent_components.game_components import Goal
 
 file_management_goal = Goal(
     priority=1,
