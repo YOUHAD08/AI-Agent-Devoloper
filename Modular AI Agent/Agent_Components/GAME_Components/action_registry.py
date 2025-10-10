@@ -1,11 +1,11 @@
-from action import Action
+from .action import Action
 
 
 class ActionRegistry:
     def __init__(self):
         self._actions = {}
 
-    def register_action(self, action : Action):
+    def register(self, action : Action):
         """Registers a new action with the given name and function."""
         if action.name in self._actions:
             raise ValueError(f"Action '{action.name}' is already registered.")

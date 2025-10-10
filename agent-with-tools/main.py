@@ -30,15 +30,14 @@ while True:
             "args": tool_args
         }
         result = tool_functions[tool_name](**tool_args)
-        if tool_name == "terminate":
-            print(f"AI: {result}")
-            break
-
-
+    
         messages.extend([
                     {"role": "assistant", "content": json.dumps(action)},
                     {"role": "user", "content": json.dumps(result)}
                 ])
+        if tool_name == "terminate":
+            print(f"AI: {result}")
+            break
     else:
         assistant_message = response.choices[0].message.content
         print(f"AI: {assistant_message}")

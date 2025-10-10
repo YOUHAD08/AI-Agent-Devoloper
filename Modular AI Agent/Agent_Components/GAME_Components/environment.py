@@ -1,6 +1,6 @@
 import time
 import traceback
-from action import Action
+from .action import Action
 
 
 class Environment:
