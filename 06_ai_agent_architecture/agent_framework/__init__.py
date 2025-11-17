@@ -1,4 +1,4 @@
-from .core import Goal, Memory, Environment, Action, ActionRegistry, Agent, ActionContext
+from .core import Goal, Memory, Environment, Action, ActionRegistry, Agent, ActionContext, Storage
 from .language import AgentLanguage, AgentFunctionCallingActionLanguage
 from .tools import register_tool, PythonActionRegistry
 from .utils import Prompt, generate_response
@@ -12,6 +12,7 @@ __all__ = [
     'ActionRegistry',
     'Agent',
     'ActionContext',
+    'Storage',
     # Language
     'AgentLanguage',
     'AgentFunctionCallingActionLanguage',

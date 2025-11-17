@@ -4,6 +4,7 @@ from .environment import Environment
 from .goals import Goal
 from .memory import Memory
 from .context import ActionContext
+from .storage import Storage
 
 __all__ = [
     'Action',
@@ -12,5 +13,6 @@ __all__ = [
     'Environment',
     'Goal',
     'Memory',
-    'ActionContext'
+    'ActionContext',
+    'Storage'
 ]

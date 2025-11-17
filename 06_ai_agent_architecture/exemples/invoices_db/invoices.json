@@ -1,0 +1,73 @@
+{
+  "invoices": {
+    "INV-001": {
+      "invoice_number": "INV-001",
+      "date": "2024-01-15",
+      "total_amount": 5000.0,
+      "vendor": {
+        "name": "XYZ Corp",
+        "address": ""
+      },
+      "line_items": [
+        {
+          "description": "Consulting Services",
+          "quantity": 1,
+          "unit_price": 5000.0,
+          "total": 5000.0
+        }
+      ]
+    },
+    "INV-002": {
+      "invoice_number": "INV-002",
+      "date": "January 20, 2024",
+      "total_amount": 3500.0,
+      "vendor": {
+        "name": "ABC Company",
+        "address": ""
+      },
+      "line_items": [
+        {
+          "description": "Software License",
+          "quantity": 1,
+          "unit_price": 2000.0,
+          "total": 2000.0
+        },
+        {
+          "description": "Support",
+          "quantity": 1,
+          "unit_price": 1500.0,
+          "total": 1500.0
+        }
+      ]
+    },
+    "INV-003": {
+      "invoice_number": "INV-003",
+      "date": "01/25/2024",
+      "total_amount": 7200.0,
+      "vendor": {
+        "name": "Tech Solutions Inc.",
+        "address": ""
+      },
+      "line_items": [
+        {
+          "description": "Hardware",
+          "quantity": 1,
+          "unit_price": 4000.0,
+          "total": 4000.0
+        },
+        {
+          "description": "Installation",
+          "quantity": 1,
+          "unit_price": 2000.0,
+          "total": 2000.0
+        },
+        {
+          "description": "Training",
+          "quantity": 1,
+          "unit_price": 1200.0,
+          "total": 1200.0
+        }
+      ]
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import json
-from typing import List, Callable
+from typing import List, Callable, Optional
 from .goals import Goal
 from .memory import Memory
 from .action import ActionRegistry
 from .environment import Environment
 from .context import ActionContext
+from .storage import Storage
 from ..language.base import AgentLanguage
 from ..utils.llm import Prompt
 
@@ -14,9 +15,18 @@ class Agent:
                  agent_language: AgentLanguage,
                  action_registry: ActionRegistry,
                  generate_response: Callable[[Prompt], str],
-                 environment: Environment):
+                 environment: Environment,
+                 storage: Optional[Storage] = None):
         """
         Initialize an agent with its core GAME components
+        
+        Args:
+            goals: List of goals for the agent
+            agent_language: Language interface for LLM communication
+            action_registry: Registry of available actions
+            generate_response: Function to call LLM
+            environment: Execution environment for actions
+            storage: Optional persistent storage (if None, creates default)
         """
         self.goals = goals
         self.generate_response = generate_response
@@ -25,10 +35,14 @@ class Agent:
         self.environment = environment
         self.memory = None
         
+        # Create or use provided storage
+        self.storage = storage or Storage()
+        
         # Create action context
         self.action_context = ActionContext(
             llm=generate_response,
-            agent=self
+            agent=self,
+            storage=self.storage
         )
         
         # Provide context to environment
