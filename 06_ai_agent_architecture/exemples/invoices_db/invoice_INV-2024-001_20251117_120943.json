@@ -1,0 +1,39 @@
+{
+    "invoice_number": "INV-2024-001",
+    "date": "January 15, 2024",
+    "amount": {
+        "subtotal": 8500.0,
+        "tax": 850.0,
+        "total": 9350.0,
+        "currency": "USD"
+    },
+    "vendor": {
+        "name": "ABC Company Inc.",
+        "tax_id": "12-3456789",
+        "address": "123 Business Street\nNew York, NY 10001"
+    },
+    "client": {
+        "name": "XYZ Corporation",
+        "address": "456 Client Avenue\nLos Angeles, CA 90001"
+    },
+    "line_items": [
+        {
+            "description": "Professional Services",
+            "quantity": 40,
+            "unit_price": 150.0,
+            "total": 6000.0
+        },
+        {
+            "description": "Software License",
+            "quantity": 5,
+            "unit_price": 200.0,
+            "total": 1000.0
+        },
+        {
+            "description": "Support Package",
+            "quantity": 1,
+            "unit_price": 1500.0,
+            "total": 1500.0
+        }
+    ]
+}

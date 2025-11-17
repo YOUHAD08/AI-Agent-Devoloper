@@ -1,0 +1,44 @@
+from typing import Callable, Dict, Any, List
+import inspect
+
+class Action:
+    def __init__(self,
+                 name: str,
+                 function: Callable,
+                 description: str,
+                 parameters: Dict,
+                 terminal: bool = False,
+                 requires_context: bool = False):
+        self.name = name
+        self.function = function
+        self.description = description
+        self.terminal = terminal
+        self.parameters = parameters
+        self.requires_context = requires_context
+        
+        # Auto-detect if function needs action_context
+        sig = inspect.signature(function)
+        if 'action_context' in sig.parameters:
+            self.requires_context = True
+    
+    def execute(self, action_context=None, **args) -> Any:
+        """Execute the action's function"""
+        if self.requires_context:
+            return self.function(action_context=action_context, **args)
+        else:
+            return self.function(**args)
+
+
+class ActionRegistry:
+    def __init__(self):
+        self.actions = {}
+    
+    def register(self, action: Action):
+        self.actions[action.name] = action
+    
+    def get_action(self, name: str) -> Action | None:
+        return self.actions.get(name, None)
+    
+    def get_actions(self) -> List[Action]:
+        """Get all registered actions"""
+        return list(self.actions.values())
