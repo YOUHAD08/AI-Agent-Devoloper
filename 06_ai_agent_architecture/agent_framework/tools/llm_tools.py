@@ -4,6 +4,105 @@ from .registry import register_tool
 from ..core.context import ActionContext
 from ..utils.llm import Prompt
 
+# Add this to the existing llm_tools.py file
+
+@register_tool(
+    tags=["llm", "expert"],
+    description="Consult an expert persona for specialized knowledge and analysis."
+)
+def prompt_expert(action_context: ActionContext, 
+                  description_of_expert: str, 
+                  prompt: str) -> str:
+    """
+    Consult an expert persona for specialized analysis.
+    
+    This implements the PERSONA PATTERN:
+    - Act as [EXPERT X]
+    - Perform [TASK Y]
+    
+    Args:
+        action_context: Context containing LLM
+        description_of_expert: Description of the expert persona 
+                              (e.g., "A senior financial analyst with expertise in...")
+        prompt: The question or task for the expert
+        
+    Returns:
+        Expert's response as a string
+    """
+    generate_response = action_context.get_llm()
+    
+    if not generate_response:
+        raise ValueError("LLM not available in action context")
+    
+    # Construct persona-based prompt
+    system_message = f"You are {description_of_expert}. Provide expert analysis based on your specialized knowledge and experience."
+    
+    response = generate_response(Prompt(messages=[
+        {"role": "system", "content": system_message},
+        {"role": "user", "content": prompt}
+    ]))
+    
+    return response
+
+
+@register_tool(
+    tags=["llm", "expert", "structured"],
+    description="Consult an expert and get structured JSON response."
+)
+def prompt_expert_for_json(action_context: ActionContext,
+                           description_of_expert: str,
+                           prompt: str,
+                           schema: dict) -> dict:
+    """
+    Consult an expert persona and get structured JSON output.
+    
+    Combines PERSONA PATTERN with structured output.
+    
+    Args:
+        action_context: Context containing LLM
+        description_of_expert: Description of the expert persona
+        prompt: The question or task for the expert
+        schema: JSON schema for the expected response
+        
+    Returns:
+        Structured response as a dictionary
+    """
+    generate_response = action_context.get_llm()
+    
+    if not generate_response:
+        raise ValueError("LLM not available in action context")
+    
+    # Construct persona-based prompt with schema requirement
+    system_message = f"""You are {description_of_expert}. 
+Provide expert analysis based on your specialized knowledge and experience.
+
+You MUST respond with JSON that adheres to this schema:
+{json.dumps(schema, indent=2)}
+
+Output your JSON in a ```json markdown block."""
+    
+    # Try up to 3 times
+    for i in range(3):
+        try:
+            response = generate_response(Prompt(messages=[
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": prompt}
+            ]))
+            
+            # Extract JSON
+            if "```json" in response:
+                start = response.find("```json")
+                end = response.rfind("```")
+                response = response[start+7:end].strip()
+            
+            return json.loads(response)
+            
+        except Exception as e:
+            if i == 2:
+                raise e
+            print(f"Error generating expert response: {e}")
+            print("Retrying...")
+
 def validate_json_schema(data: dict, schema: dict) -> tuple[bool, list]:
     """
     Simple JSON schema validator.

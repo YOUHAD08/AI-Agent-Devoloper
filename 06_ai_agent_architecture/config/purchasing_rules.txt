@@ -1,0 +1,32 @@
+COMPANY PURCHASING POLICY
+Version 2.0 - Effective January 2024
+
+APPROVAL REQUIREMENTS:
+1. All purchases over $5,000 require pre-approval from department manager
+2. Purchases over $10,000 require CFO approval
+3. Purchases over $50,000 require Board approval
+
+VENDOR REQUIREMENTS:
+4. IT equipment must be purchased from approved vendors only
+5. New vendors must complete vendor onboarding process before first purchase
+6. All vendors must have current W-9 on file
+
+DOCUMENTATION REQUIREMENTS:
+7. Travel expenses must include trip justification and itemized receipts
+8. Consulting fees over $10,000 require a Statement of Work (SOW)
+9. All equipment purchases require asset tagging within 5 business days
+
+CATEGORY-SPECIFIC RULES:
+10. Software licenses require IT department approval
+11. Marketing expenses require Marketing VP approval
+12. Training expenses require HR approval for amounts over $2,000
+
+PAYMENT TERMS:
+13. Standard payment terms are Net 30
+14. Early payment discounts must be approved by Finance
+15. Credit card purchases limited to $1,000 per transaction
+
+COMPLIANCE:
+16. All purchases must comply with company code of conduct
+17. Personal purchases are strictly prohibited
+18. Gifts from vendors exceeding $50 must be reported to Compliance

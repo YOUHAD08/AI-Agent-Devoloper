@@ -1,0 +1,107 @@
+{
+  "invoice_schemas": {
+    "invoice_extraction_schema": "{\"invoice_number\":\"string\",\"date\":\"string\",\"supplier\":\"string\",\"items\":[{\"name\":\"string\",\"price\":\"number\"}],\"total\":\"number\"}"
+  },
+  "invoices": {
+    "INV-2024-001": {
+      "invoice_number": "INV-2024-001",
+      "date": "January 15, 2024",
+      "supplier": "Tech Solutions Inc.",
+      "items": [
+        {
+          "name": "Laptop (Dell XPS 15)",
+          "price": 2000
+        },
+        {
+          "name": "External Monitor",
+          "price": 400
+        },
+        {
+          "name": "Software License (MS Office)",
+          "price": 150
+        }
+      ],
+      "total": 2550,
+      "description": "This purchase encompasses essential technology equipment and software for enhanced productivity, including a Dell XPS 15 laptop, an external monitor, and a Microsoft Office software license.",
+      "category": "Technology Equipment and Software",
+      "compliance": {
+        "is_valid": false,
+        "reasoning": "The text provides details about an invoice and the items purchased, but it does not specify any information about compliance with the company's purchasing policies, approval requirements, or documentation needs.",
+        "issues": [
+          "Lacks mention of compliance with the company's purchasing policy.",
+          "No information on whether approval requirements were met.",
+          "No details on documentation needs being fulfilled."
+        ],
+        "suggestions": [
+          "Include a statement confirming that the purchase complies with the company's purchasing policy.",
+          "Mention whether the necessary approval was obtained prior to the purchase.",
+          "Provide details or confirmation that the documentation required for this purchase is complete and in compliance with company policies."
+        ]
+      }
+    },
+    "INV-2024-002": {
+      "invoice_number": "INV-2024-002",
+      "date": "January 20, 2024",
+      "supplier": "Management Consulting Group",
+      "items": [
+        {
+          "name": "Strategic Planning Consultation",
+          "price": 12000
+        }
+      ],
+      "total": 12000,
+      "description": "A comprehensive Strategic Planning Consultation service to guide and optimize your Q1 strategic planning project by leveraging expert insights and bespoke strategies tailored to your organizational goals.",
+      "category": "Strategic Planning Consulting",
+      "compliance": {
+        "is_valid": false,
+        "reasoning": "The text provides details of an invoice but does not indicate if it complies with the company's purchasing policy, including whether it has met approval requirements and documentation needs. Without this information, it cannot be confirmed if the purchase adheres to the specified criteria.",
+        "issues": [
+          "No mention of compliance with the company's purchasing policy.",
+          "Lack of information regarding approval requirements.",
+          "Absence of details about documentation needs being met."
+        ],
+        "suggestions": [
+          "Include a statement indicating that this purchase has been approved as per the company's purchasing policy.",
+          "Provide details of the approval process to show compliance with approval requirements.",
+          "Mention the documentation that accompanies the invoice to ensure it meets company policy needs."
+        ]
+      }
+    },
+    "INV-2024-003": {
+      "invoice_number": "INV-2024-003",
+      "date": "January 25, 2024",
+      "supplier": "Office Depot",
+      "items": [
+        {
+          "name": "Printer Paper (50 reams)",
+          "price": 250
+        },
+        {
+          "name": "Pens (bulk order)",
+          "price": 75
+        },
+        {
+          "name": "Desk Organizers",
+          "price": 180
+        }
+      ],
+      "total": 505,
+      "description": "The office has procured 50 reams of printer paper, a bulk order of pens, and several desk organizers, essential for maintaining efficient workflow and organization.",
+      "category": "Office Supplies",
+      "compliance": {
+        "is_valid": false,
+        "reasoning": "The provided text does not mention any compliance with the company's purchasing policy, approval requirements, or documentation needs. It only lists the invoice details including the date, supplier, items purchased, and total amount.",
+        "issues": [
+          "Missing information about compliance with the company's purchasing policy.",
+          "No evidence of approval requirements being met.",
+          "No documentation provided to support the purchase process."
+        ],
+        "suggestions": [
+          "Include a statement or evidence confirming that the purchase complies with the company's purchasing policy.",
+          "Mention if the purchase has been approved by the responsible parties as per company policies.",
+          "Attach or reference documentation that meets company documentation needs for the purchase."
+        ]
+      }
+    }
+  }
+}
