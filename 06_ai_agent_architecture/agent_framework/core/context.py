@@ -7,6 +7,8 @@ class ActionContext:
     """
     def __init__(self, 
                  llm: Callable = None,
+                 fast_llm: Callable = None,        # ← Small, quick model
+                 powerful_llm: Callable = None,    # ← Larger, more powerful model
                  agent: Any = None,
                  memory: Any = None,
                  storage: Any = None,
@@ -22,7 +24,9 @@ class ActionContext:
             metadata: Additional contextual information
         """
         self._context = {
-            "llm": llm,
+            "llm": llm or fast_llm,          # Default to fast model
+            "fast_llm": fast_llm,            # Small & cheap
+            "powerful_llm": powerful_llm,    # Large & expensive
             "agent": agent,
             "memory": memory,
             "storage": storage,
@@ -37,9 +41,22 @@ class ActionContext:
         """Set a value in the context"""
         self._context[key] = value
     
-    def get_llm(self) -> Callable:
-        """Convenience method to get the LLM function"""
-        return self._context.get("llm")
+    def get_llm(self, model_type: str = "fast") -> Callable:
+        """
+        Get an LLM model by type.
+        
+        Args:
+            model_type: "fast", "powerful", or "default"
+            
+        Returns:
+            The requested LLM function
+        """
+        if model_type == "fast":
+            return self._context.get("fast_llm")
+        elif model_type == "powerful":
+            return self._context.get("powerful_llm")
+        else:
+            return self._context.get("llm")
     
     def get_agent(self):
         """Convenience method to get the agent"""

@@ -173,3 +173,37 @@ def load_knowledge_base(file_paths: List[str]) -> dict:
         "combined_content": combined,
         "errors": errors
     }
+
+import subprocess
+import os
+
+@register_tool(tags=["policy", "versioned"])
+def load_policy_version(policy_name: str, date: str) -> str:
+    """Load a policy as it existed on a specific date."""
+    
+    # Get the commit hash for the specified date
+    result = subprocess.run(
+        ["git", "rev-list", "-n", "1", f"--before={date}", "main"],
+        capture_output=True,
+        text=True,
+        cwd=os.path.dirname(os.path.dirname(__file__))  # Project root
+    )
+    
+    commit_hash = result.stdout.strip()
+    
+    if not commit_hash:
+        raise ValueError(f"No commits found before {date}")
+    
+    # Get the file content at that commit
+    result = subprocess.run(
+        ["git", "show", f"{commit_hash}:config/{policy_name}"],
+        capture_output=True,
+        text=True,
+        cwd=os.path.dirname(os.path.dirname(__file__))
+    )
+    
+    if result.returncode != 0:
+        raise ValueError(f"Could not load {policy_name} from {date}")
+    
+    return result.stdout
+
